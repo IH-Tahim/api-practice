@@ -2,32 +2,47 @@ const searchFood = () => {
     const searchField = document.getElementById('searh_input');
     const searchText = searchField.value;
     console.log(searchText);
+    if (searchText == 0) {
+        console.log(404);
+        const container = document.getElementById('food-container');
+        container.innerHTML = `<p>Please write a Value</p>`
+    }
+    else {
+        const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => displayFood(data.meals))
+    }
     searchField.value = "";
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`;
-    fetch(url)
-        .then(res => res.json())
-        .then(data => displayFood(data.meals))
+
 }
 
 const displayFood = foods => {
-    console.log(foods);
+    // console.log(foods);
     const container = document.getElementById('food-container');
+    container.textContent = "";//clear previous searches
+
+    const detailsContainer = document.getElementById('details-container');
+    detailsContainer.textContent = "";//clear previous details 
+
     foods.forEach(food => {
         console.log(food);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card" onclick="loadDetails(${food.idMeal})">
-            <img src="${food.strMealThumb}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${food.strMeal}</h5>
-                <p class="card-text">${food.strInstructions.slice(0, 200)}</p>
-            </div>
-        </div>`;
+            <div class="card" onclick="loadDetails(${food.idMeal})">
+                <img src="${food.strMealThumb}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">${food.strMeal}</h5>
+                    <p class="card-text">${food.strInstructions.slice(0, 200)}</p>
+                </div>
+            </div>`;
 
         container.appendChild(div);
 
     })
+
+
 }
 
 
@@ -40,8 +55,9 @@ const loadDetails = foodID => {
 }
 
 const displayDetails = foodDetails => {
-    console.log(foodDetails);
+    // console.log(foodDetails);
     const detailsContainer = document.getElementById('details-container');
+    detailsContainer.textContent = "";//clear previous details 
     const detailDiv = document.createElement('div');
     detailDiv.classList.add('card');
     detailDiv.innerHTML = `

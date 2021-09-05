@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icons</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <style>
+        .width-75 {
+            width: 150px;
+        }
+
+        svg {
+            width: 120px !important;
+            height: unset !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-group mb-3 mt-5 mx-auto w-75">
+        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+            aria-describedby="button-addon2" id="search-box">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+            onclick="loadSearchData()">Button</button>
+    </div>
+
+    <div class="container">
+        <div class="row" id="container"></div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="icon.js"></script>
+</body>
+
+</html>
